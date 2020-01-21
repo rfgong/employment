@@ -1,0 +1,40 @@
+From all data to equation regressions:
+
+1. merge_market.py
+    Input:
+        - compustat_full_month.csv
+        - crsp_full_month.csv
+    Output:
+        - market_measures.csv
+
+2. factor_alphas.py
+    Input:
+        - crsp_full_month.csv
+        - factors.csv
+    Output:
+        - ff3alphas.csv
+
+3. collect_skills.py
+    Input:
+        - cognism_current.txt
+        - cognism_join.txt
+        - cognism_leave.txt
+    Output:
+        - skills_current.csv
+        - skills_join.csv
+        - skills_leave.csv
+
+4. find_premia.py
+    Input:
+        - ff3alphas.csv
+        - market_measures.csv
+        - skills_current.csv
+        - skills_join.csv
+        - skills_leave.csv
+    Output:
+        - premia_current.csv
+        - premia_join.csv
+        - premia_leave.csv
+
+
+
