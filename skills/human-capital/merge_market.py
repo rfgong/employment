@@ -4,22 +4,23 @@
 import databases as d
 import utils_direct as ud
 import pandas as pd
+import os
 
 compustat = pd.read_csv("compustat_full_month.csv")
 compustat.dropna(inplace=True)
-compustat = compustat.drop_duplicates(subset=['tic', 'rdq'], keep='first')  # compustat has redundancy
+compustat = compustat.drop_duplicates(subset=['tic', 'datadate'], keep=False)
+compustat.to_csv("reduced_compustat_full_month.csv", index=False)
 
 crsp = pd.read_csv("crsp_full_month.csv")
 crsp.dropna(inplace=True)
-crsp = crsp.drop_duplicates(subset=['date', 'TICKER'], keep='first')  # crsp has redundancy
+crsp = crsp.drop_duplicates(subset=['date', 'TICKER'], keep=False)
+crsp.to_csv("reduced_crsp_full_month.csv", index=False)
 
 sharedTics = list(set(compustat["tic"].unique().tolist()) & set(crsp["TICKER"].unique().tolist()))
 compustat = compustat.loc[compustat["tic"].isin(sharedTics)]
-compustat.to_csv("compustat_full_month.csv", index=False)
 crsp = crsp.loc[crsp["TICKER"].isin(sharedTics)]
-crsp.to_csv("crsp_full_month.csv", index=False)
 
-compustat = d.BookDatabase("compustat_full_month.csv")
+compustat = d.BookDatabase("reduced_compustat_full_month.csv")
 # Industry dummy lists, n-1 are permitted with NAICS "11" omitted
 permitted_inds = ["21", "22", "23", "31", "42", "44", "48", "51", "52", "53", "54", "55", "56", "61",
                   "62", "71", "72", "81", "92"]
@@ -34,7 +35,7 @@ g.write(header + ",MOM\n")
 
 ticker_to_YYYYMM_to_ret = {}  # Maps each ticker to a dictionary, which maps YYYYMM to return
 
-with open("crsp_full_month.csv") as f:
+with open("reduced_crsp_full_month.csv") as f:
     skip = True
     for line in f:
         if skip:
@@ -42,9 +43,6 @@ with open("crsp_full_month.csv") as f:
             continue
         # split line of crsp: 0:PERMNO,1:date,2:TICKER,3:PRC,4:VOL,5:SHROUT,6:RETX,7:vwretx
         current = line.rstrip('\n').split(',')
-        # skip if RETX is invalid
-        if current[6] == 'C' or current[6] == 'R':
-            continue
         # save the RETX for later reference
         if current[2] not in ticker_to_YYYYMM_to_ret:
             # create a dictionary for firm
@@ -85,3 +83,8 @@ g.close()
 df = pd.read_csv(file_name)
 df.sort_values(by=["DATE", "TICKER"], inplace=True)
 df.to_csv(file_name, index=False)
+
+# Delete intermediate files
+os.remove("reduced_compustat_full_month.csv")
+os.remove("reduced_crsp_full_month.csv")
+

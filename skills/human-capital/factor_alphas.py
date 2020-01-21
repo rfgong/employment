@@ -6,6 +6,8 @@ import numpy as np
 import statsmodels.formula.api as sm
 
 crsp = pd.read_csv("crsp_full_month.csv", dtype={'date': np.object})
+crsp.dropna(inplace=True)
+crsp = crsp.drop_duplicates(subset=['date', 'TICKER'], keep=False)
 crsp = crsp[['date', 'TICKER', 'RETX']]
 crsp = crsp[(crsp['RETX'] != 'R') & (crsp['RETX'] != 'C')]
 crsp["RETX"] = crsp["RETX"].apply(pd.to_numeric)

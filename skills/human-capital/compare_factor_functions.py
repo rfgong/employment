@@ -1,6 +1,6 @@
 # compare_factor_functions.py
 # -------
-# Checks that factors.csv and FF3factor_returns.py yields the same output
+# Checks that factors.csv and FF3factor_returns.py yields the same output after they are run
 import pandas as pd
 import pickle
 import matplotlib.pyplot as plt
