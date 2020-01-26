@@ -9,21 +9,23 @@ import os
 compustat = pd.read_csv("compustat_full_month.csv")
 compustat.dropna(inplace=True)
 compustat = compustat.drop_duplicates(subset=['tic', 'datadate'], keep=False)
-compustat.to_csv("reduced_compustat_full_month.csv", index=False)
 
 crsp = pd.read_csv("crsp_full_month.csv")
+crsp = crsp[['PERMNO', 'date', 'TICKER', 'PRC', 'VOL', 'SHROUT', 'RET', 'vwretx']]  # For code compatibility
 crsp.dropna(inplace=True)
 crsp = crsp.drop_duplicates(subset=['date', 'TICKER'], keep=False)
-crsp.to_csv("reduced_crsp_full_month.csv", index=False)
+crsp = crsp[(crsp['RET'] != 'R') & (crsp['RET'] != 'C')]
 
 sharedTics = list(set(compustat["tic"].unique().tolist()) & set(crsp["TICKER"].unique().tolist()))
 compustat = compustat.loc[compustat["tic"].isin(sharedTics)]
 crsp = crsp.loc[crsp["TICKER"].isin(sharedTics)]
+compustat.to_csv("reduced_compustat_full_month.csv", index=False)
+crsp.to_csv("reduced_crsp_full_month.csv", index=False)
 
 compustat = d.BookDatabase("reduced_compustat_full_month.csv")
 # Industry dummy lists, n-1 are permitted with NAICS "11" omitted
-permitted_inds = ["21", "22", "23", "31", "42", "44", "48", "51", "52", "53", "54", "55", "56", "61",
-                  "62", "71", "72", "81", "92"]
+permitted_inds = ["21", "22", "23", "31", "32", "33", "42", "44", "45", "48", "49", "51", "52", "53", "54", "55",
+                  "56", "61", "62", "71", "72", "81", "92"]
 
 # Create file and write header
 file_name = "market_measures.csv"
@@ -31,7 +33,8 @@ g = open(file_name, "w+")
 header = "DATE,TICKER,LN_MCAP,BM"
 for ind in permitted_inds:
     header += ",I" + ind
-g.write(header + ",MOM\n")
+header += ",MOM,FEB,MAR,APR,MAY,JUN,JUL,AUG,SEP,OCT,NOV,DEC\n"
+g.write(header)
 
 ticker_to_YYYYMM_to_ret = {}  # Maps each ticker to a dictionary, which maps YYYYMM to return
 
@@ -41,9 +44,9 @@ with open("reduced_crsp_full_month.csv") as f:
         if skip:
             skip = False
             continue
-        # split line of crsp: 0:PERMNO,1:date,2:TICKER,3:PRC,4:VOL,5:SHROUT,6:RETX,7:vwretx
+        # split line of crsp: 0:PERMNO,1:date,2:TICKER,3:PRC,4:VOL,5:SHROUT,6:RET,7:vwretx
         current = line.rstrip('\n').split(',')
-        # save the RETX for later reference
+        # save the RET for later reference
         if current[2] not in ticker_to_YYYYMM_to_ret:
             # create a dictionary for firm
             ticker_to_YYYYMM_to_ret[current[2]] = {}
@@ -75,6 +78,13 @@ with open("reduced_crsp_full_month.csv") as f:
             continue
         else:
             new_line += "," + mom
+        # insert monthly controls (11)
+        month = int(key[4:])
+        for i in range(2, 13):
+            if month == i:
+                new_line += ",1"
+            else:
+                new_line += ",0"
         new_line += "\n"
         g.write(new_line)
 g.close()

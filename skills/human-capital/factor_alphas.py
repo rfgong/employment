@@ -8,9 +8,9 @@ import statsmodels.formula.api as sm
 crsp = pd.read_csv("crsp_full_month.csv", dtype={'date': np.object})
 crsp.dropna(inplace=True)
 crsp = crsp.drop_duplicates(subset=['date', 'TICKER'], keep=False)
-crsp = crsp[['date', 'TICKER', 'RETX']]
-crsp = crsp[(crsp['RETX'] != 'R') & (crsp['RETX'] != 'C')]
-crsp["RETX"] = crsp["RETX"].apply(pd.to_numeric)
+crsp = crsp[['date', 'TICKER', 'RET']]
+crsp = crsp[(crsp['RET'] != 'R') & (crsp['RET'] != 'C')]
+crsp["RET"] = crsp["RET"].apply(pd.to_numeric)
 crsp['date'] = crsp['date'].str.slice(0, 6)
 factors = pd.read_csv("factors.csv", dtype={'DATE': np.object})
 factors.rename(columns={'DATE': 'date'}, inplace=True)
@@ -26,8 +26,8 @@ for tic in tickers:
     # Skip under-defined regressions where there are fewer observations than variables used
     if len(tic_df.index) < 4:
         continue
-    reg = sm.ols(formula="RETX ~ SMB + HML + Mkt", data=tic_df).fit()
-    tic_df["ff3alpha"] = tic_df["RETX"] - reg.params.SMB * tic_df["SMB"] - reg.params.HML * tic_df["HML"] - reg.params.Mkt * tic_df["Mkt"]
+    reg = sm.ols(formula="RET ~ SMB + HML + Mkt", data=tic_df).fit()
+    tic_df["ff3alpha"] = tic_df["RET"] - reg.params.SMB * tic_df["SMB"] - reg.params.HML * tic_df["HML"] - reg.params.Mkt * tic_df["Mkt"]
     tic_df = tic_df[["date", "TICKER", "ff3alpha"]]
     out = out.append(tic_df, ignore_index=True)
 

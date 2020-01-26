@@ -6,7 +6,7 @@ import ast
 import os
 
 
-def write_skills(input_name, output_name):
+def write_skills(input_name, output_name, employee_threshold=0):
     # Create file and write header
     g = open(output_name, "w+")
     header = "DATE,TICKER"
@@ -18,8 +18,8 @@ def write_skills(input_name, output_name):
         for line in f:
             # split line of cognism: 0:Symbol,1:YearMonth,2:Employees,3:AverageAge,4:KnownAge,5:Female,6:Male,7:NoSkills,8:AverageTenure,9:SkillsFrequencies
             current = line.rstrip('\n').split('\t')
-            # skip malformed symbols and companies with 0 employees
-            if "," in current[0] or int(current[2]) == 0:
+            # skip malformed symbols and companies with fewer than employee_threshold employees
+            if "," in current[0] or int(current[2]) < employee_threshold:
                 continue
             skills_arr = ast.literal_eval(current[9])
             # insert DATE, TICKER
@@ -71,9 +71,9 @@ def winsorize(input_name, output_name, cutoff):
     g.close()
 
 
-write_skills("cognism_current.txt", "intermed_current.csv")
-write_skills("cognism_join.txt", "intermed_join.csv")
-write_skills("cognism_leave.txt", "intermed_leave.csv")
+write_skills("cognism_current.txt", "intermed_current.csv", 100)
+write_skills("cognism_join.txt", "intermed_join.csv", 100)
+write_skills("cognism_leave.txt", "intermed_leave.csv", 100)
 winsorize("intermed_current.csv", "skills_current.csv", 1)
 winsorize("intermed_join.csv", "skills_join.csv", 1)
 winsorize("intermed_leave.csv", "skills_leave.csv", 1)

@@ -19,19 +19,19 @@ for line in FF3_file:
 # Security return from CRSP
 crsp = open('crsp_full_month.csv')
 ret = {}
-# 0:PERMNO,1:date,2:TICKER,3:PRC,4:VOL,5:SHROUT,6:RETX,7:vwretx
+# 0:PERMNO,1:date,2:TICKER,3:PRC,4:VOL,5:RET,6:SHROUT,7:vwretx
 skip = True
 for line in crsp:
     if skip:
         skip = False
         continue
     columns = line.split(',')
-    if len(columns[6])>0 and len(columns[2])>0 and columns[6] != 'C' and columns[6] != 'B':
+    if len(columns[5])>0 and len(columns[2])>0 and columns[5] != 'C' and columns[5] != 'B':
         dt =  float(columns[1][0:4])+float(columns[1][4:6])/100
         if dt in FF3:
             if columns[2] not in ret:
                 ret[columns[2]] = {}
-            ret[columns[2]][dt] = [float(columns[6]),FF3[dt][0],FF3[dt][1],FF3[dt][2]]
+            ret[columns[2]][dt] = [float(columns[5]),FF3[dt][0],FF3[dt][1],FF3[dt][2]]
 
 # Run the time series regression for each firm, estimate monthly alphas
 alphas = {}
