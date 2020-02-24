@@ -90,10 +90,10 @@ def day_of_week(YYYYMMDD):
     raise RuntimeError("SUNDAY AND SUNDAY NEWS UNACCOUNTED FOR")
 
 
-def momentum(YYYYMM, YYYYMM_to_ret):
+def momentum(YYYYMM, YYYYMM_to_prc):
     """
-    Takes date string and dictionary that maps YYYYMM to return
-    Return for month t-1 less return for month t-12
+    Takes date string and dictionary that maps YYYYMM to price
+    Computed as (price month t-1 / price month t-12) - 1
     Return "" (empty string) if date not compatible
     Returns STRING
     """
@@ -107,8 +107,8 @@ def momentum(YYYYMM, YYYYMM_to_ret):
         YYYYMM_t1 = str(int(YYYYMM[:4]) - 1) + "12"
     # Get return t-12 key
     YYYYMM_t12 = str(int(YYYYMM[:4]) - 1) + YYYYMM[4:]
-    if YYYYMM_t1 in YYYYMM_to_ret and YYYYMM_t12 in YYYYMM_to_ret:
-        return str(YYYYMM_to_ret[YYYYMM_t1] - YYYYMM_to_ret[YYYYMM_t12])
+    if YYYYMM_t1 in YYYYMM_to_prc and YYYYMM_t12 in YYYYMM_to_prc:
+        return str(YYYYMM_to_prc[YYYYMM_t1] / YYYYMM_to_prc[YYYYMM_t12] - 1)
     else:
         return ""
 

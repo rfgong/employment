@@ -10,6 +10,10 @@ cog_c = pd.read_csv("skills_current.csv")
 cog_j = pd.read_csv("skills_join.csv")
 cog_l = pd.read_csv("skills_leave.csv")
 ff3 = pd.read_csv("ff3alphas.csv")
+# Add monthly controls to market data
+dummy_month = pd.get_dummies(market['DATE'], prefix='month')
+month_col = list(dummy_month.columns.values)
+market = market.join(dummy_month.loc[:, month_col[1]:])
 # Merge cognism with market
 cog_c = cog_c.merge(market, on=["DATE", "TICKER"])
 cog_j = cog_j.merge(market, on=["DATE", "TICKER"])
@@ -28,17 +32,15 @@ abn_l = pd.DataFrame(cols)
 abn_l["DATE"] = cog_l["DATE"]
 abn_l["TICKER"] = cog_l["TICKER"]
 # Find AbnSkills
+dependent_vars = ' + '.join(market.columns[2:])
 for i in range(50):
-    reg = sm.ols(formula="S"+str(i)+" ~ LN_MCAP + BM + I21 + I22 + I23 + I31 + I42 + I44 + I48 + I51 + I52 + I53 + "
-                                    "I54 + I55 + I56 + I61 + I62 + I71 + I72 + I81 + I92 + MOM", data=cog_c).fit()
+    reg = sm.ols(formula="S"+str(i)+" ~ "+dependent_vars, data=cog_c).fit()
     abn_c["AS" + str(i)] = reg.resid
 for i in range(50):
-    reg = sm.ols(formula="S"+str(i)+" ~ LN_MCAP + BM + I21 + I22 + I23 + I31 + I42 + I44 + I48 + I51 + I52 + I53 + "
-                                    "I54 + I55 + I56 + I61 + I62 + I71 + I72 + I81 + I92 + MOM", data=cog_j).fit()
+    reg = sm.ols(formula="S"+str(i)+" ~ "+dependent_vars, data=cog_j).fit()
     abn_j["AS" + str(i)] = reg.resid
 for i in range(50):
-    reg = sm.ols(formula="S"+str(i)+" ~ LN_MCAP + BM + I21 + I22 + I23 + I31 + I42 + I44 + I48 + I51 + I52 + I53 + "
-                                    "I54 + I55 + I56 + I61 + I62 + I71 + I72 + I81 + I92 + MOM", data=cog_l).fit()
+    reg = sm.ols(formula="S"+str(i)+" ~ "+dependent_vars, data=cog_l).fit()
     abn_l["AS" + str(i)] = reg.resid
 
 # Convert date to months
