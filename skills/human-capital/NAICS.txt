@@ -19,4 +19,5 @@ Industry Control: uses North American Industry Classification System (NAICS)
 72 Accommodation and Food Services
 81 Other Services (except Public Administration)
 92 Public Administration
+99 Nonclassifiable Establishments
 
