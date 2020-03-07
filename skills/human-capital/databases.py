@@ -318,7 +318,7 @@ class BookDatabase:
                     # skip header
                     skip = False
                     continue
-                # split line of: 0:gvkey,1:datadate,2:fyearq,3:fqtr,4:tic,5:rdq,6:ceqq,7:naics
+                # split line of: 0:gvkey,1:datadate,2:fyearq,3:fqtr,4:tic,5:rdq,6:ceqq,7:ltq,8:naics
                 current = line.rstrip('\n').split(',')
                 if current[4] in self.data:
                     self.data[current[4]].append(current)
@@ -328,14 +328,14 @@ class BookDatabase:
                     self.report_date[current[4]] = set()
                     self.report_date[current[4]].add(current[1])
                 if current[4] not in self.industry:
-                    self.industry[current[4]] = current[7]
+                    self.industry[current[4]] = current[8]
 
-    def getBookValue(self, firm, date, bookUnit=1000000):
+    def get_book_liability(self, firm, date, unit=1000000):
         """
-        Firm's book value as of latest quarterly earnings report preceding date
+        Firm's book value and liabilities as of latest quarterly earnings report preceding date
         Performs modified binary search, no integer cast needed as YYYYMMDD format can be sorted as strings
         Returns -1 if no data available
-        Returns FLOAT
+        Returns (FLOAT, FLOAT)
         """
         if firm not in self.data:
             return -1
@@ -344,12 +344,13 @@ class BookDatabase:
         low_date = rows[low_ind][1]  # uses datadate
         high_ind = len(rows) - 1
         high_date = rows[high_ind][1]
-        unadjusted = -1
+        unadjusted = [0, 0]
         if date > high_date:
-            unadjusted = float(rows[high_ind][6])
+            unadjusted[0] = float(rows[high_ind][6])
+            unadjusted[1] = float(rows[high_ind][7])
         elif date <= low_date:
             # no data
-            return unadjusted
+            return -1
         else:
             mid_ind = (low_ind + high_ind) // 2
             mid_date = rows[mid_ind][1]
@@ -362,10 +363,12 @@ class BookDatabase:
                 mid_ind = (low_ind + high_ind) // 2
                 mid_date = rows[mid_ind][1]
             if low_date == date:
-                unadjusted = float(rows[low_ind - 1][6])
+                unadjusted[0] = float(rows[low_ind - 1][6])
+                unadjusted[1] = float(rows[low_ind - 1][7])
             else:
-                unadjusted = float(rows[low_ind][6])
-        return unadjusted * bookUnit
+                unadjusted[0] = float(rows[low_ind][6])
+                unadjusted[1] = float(rows[low_ind][7])
+        return unadjusted[0] * unit, unadjusted[1] * unit
 
     def isReportDate(self, firm, date):
         """

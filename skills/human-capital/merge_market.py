@@ -29,7 +29,7 @@ compustat = d.BookDatabase("reduced_compustat_full_month.csv")
 # Create file and write header
 file_name = "market_measures.csv"
 g = open(file_name, "w+")
-header = "DATE,TICKER,INDUSTRY,LN_MCAP,BM,MOM\n"
+header = "DATE,TICKER,INDUSTRY,TOB,LN_MCAP,BM,MOM\n"
 g.write(header)
 
 ticker_to_YYYYMM_to_prc = {}  # Maps each ticker to a dictionary, which maps YYYYMM to prc
@@ -53,17 +53,20 @@ with open("reduced_crsp_full_month.csv") as f:
         if float(current[5]) == 0:  # SHROUT may be zero if it is missing
             continue
         mcap = ud.marketCap(abs(float(current[3])), float(current[5]))
-        # insert industry
+        # insert INDUSTRY
         ind_code = compustat.getIndustryCode(current[2])
         new_line += "," + str(ind_code)
+        # insert TOB
+        bl = compustat.get_book_liability(current[2], current[1])
+        if bl == -1 or (bl[0] + bl[1] == 0):  # Not possible for both book and liabilities to be 0
+            continue
+        book = bl[0]
+        liab = bl[1]
+        new_line += "," + str((mcap + liab) / (book + liab))
         # insert LN_MCAP
         new_line += "," + str(ud.marketCapLN(mcap))
         # insert BM
-        book = compustat.getBookValue(current[2], current[1])
-        if book == -1:
-            continue
-        else:
-            new_line += "," + str(book / mcap)
+        new_line += "," + str(book / mcap)
         # insert MOM
         mom = ud.momentum(key, ticker_to_YYYYMM_to_prc[current[2]])
         if mom == "":
