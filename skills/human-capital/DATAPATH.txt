@@ -10,9 +10,12 @@ From all data to equation regressions:
 2. factor_alphas.py
     Input:
         - crsp_full_month.csv
-        - factors.csv
+        - factors3.csv
+        - factors5.csv
     Output:
+        - ff1alphas.csv
         - ff3alphas.csv
+        - ff5alphas.csv
 
 3. collect_skills.py
     Input:
@@ -26,15 +29,14 @@ From all data to equation regressions:
 
 4. find_premia.py
     Input:
-        - ff3alphas.csv
+        - ff1alphas.csv / ff3alphas.csv / ff5alphas.csv
         - market_measures.csv
-        - skills_current.csv
-        - skills_join.csv
-        - skills_leave.csv
+        - skills_current.csv / skills_join.csv / skills_leave.csv
     Output:
-        - premia_current.csv
-        - premia_join.csv
-        - premia_leave.csv
+        - tobit_ols.csv
+        - premia.csv
+        - premia_single_eq.csv
+        - CSV files for Fama-Macbeth
 
 
 
