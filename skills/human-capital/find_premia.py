@@ -5,15 +5,22 @@ import pandas as pd
 import statsmodels.formula.api as sm
 from collections import OrderedDict
 
-# Toggle code path
+# Toggle code functionality
 use_abn_skills = True
 output_fm_tobit = False  # User should create folder named "fama_macbeth_tob_csv" for output
 output_fm_skill = False  # User should create folder named "fama_macbeth_skill_csv" for output
+use_YYYYMM_range = False  # False to use full date range
+range_start = 201101
+range_end = 201612
+use_tobins_point_date = False  # False to use full date range
+point_date = 201601
 
 # Setup databases to read in from
 market = pd.read_csv("market_measures.csv")
 cog = pd.read_csv("skills_current.csv")
-ff = pd.read_csv("ff5alphas.csv")
+ff = pd.read_csv("ff3alphas.csv")
+if use_YYYYMM_range:
+    ff = ff[(ff['DATE'] >= range_start) & (ff['DATE'] <= range_end)]
 # Merge cognism with market
 cog = cog.merge(market, on=["DATE", "TICKER"])
 # Add industry and monthly controls
@@ -52,6 +59,8 @@ else:
 
 # Extension Tobit for equal market and book liabilities
 q_db = cog[['DATE', 'TICKER', 'TOB']]
+if use_tobins_point_date:
+    q_db = q_db[q_db['DATE'] == point_date]
 out_cols = OrderedDict({"SKILLS": skill_col, "COEFFICIENT": [], "SE": [], "TSTAT": []})
 m_q = abn.merge(q_db, on=["DATE", "TICKER"])
 for i in range(50):
