@@ -28,6 +28,9 @@ From all data to equation regressions:
         - skills_current.csv
         - skills_join.csv
         - skills_leave.csv
+        - skills_change_current.csv
+        - skills_change_join.csv
+        - skills_change_leave.csv
 
 4. find_premia.py
     Input:
@@ -40,13 +43,18 @@ From all data to equation regressions:
         - premia_single_eq.csv
         - CSV files for Fama-Macbeth
 
-4. find_wage_profit_sue.py
+5. find_wage_profit_sue.py
     Input:
         - market_measures.csv
-        - skills_current.csv / skills_join.csv / skills_leave.csv
         - compustat_year.csv
+        - compustat_month_extensions.csv
+        - skills_current.csv / skills_join.csv / skills_leave.csv
+        - skills_change_current.csv / skills_change_join.csv / skills_change_leave.csv
+
     Output:
         - wage_ols.csv
+        - profit_ols.csv
+        - sue_ols.csv
         - CSV files for Fama-Macbeth
 
 
