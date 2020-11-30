@@ -1,0 +1,233 @@
+Your selection : (77 series selected)   NOTE: Select a maximum of 200 series.
+ U.S. TOTAL All Employees All establishment sizes Federal Government NAICS 11 Agriculture, forestry, fishing and hunting : ENUUS00010111
+
+ U.S. TOTAL All Employees All establishment sizes State Government NAICS 11 Agriculture, forestry, fishing and hunting : ENUUS00010211
+
+ U.S. TOTAL All Employees All establishment sizes Local Government NAICS 11 Agriculture, forestry, fishing and hunting : ENUUS00010311
+
+ U.S. TOTAL All Employees All establishment sizes Private NAICS 11 Agriculture, forestry, fishing and hunting : ENUUS00010511
+
+ U.S. TOTAL All Employees All establishment sizes Local Government NAICS 21 Mining, quarrying, and oil and gas extraction : ENUUS00010321
+
+ U.S. TOTAL All Employees All establishment sizes Private NAICS 21 Mining, quarrying, and oil and gas extraction : ENUUS00010521
+
+ U.S. TOTAL All Employees All establishment sizes Federal Government NAICS 23 Construction : ENUUS00010123
+
+ U.S. TOTAL All Employees All establishment sizes State Government NAICS 23 Construction : ENUUS00010223
+
+ U.S. TOTAL All Employees All establishment sizes Local Government NAICS 23 Construction : ENUUS00010323
+
+ U.S. TOTAL All Employees All establishment sizes Private NAICS 23 Construction : ENUUS00010523
+
+ U.S. TOTAL All Employees All establishment sizes Federal Government NAICS 31-33 Manufacturing : ENUUS00010131-33
+
+ U.S. TOTAL All Employees All establishment sizes State Government NAICS 31-33 Manufacturing : ENUUS00010231-33
+
+ U.S. TOTAL All Employees All establishment sizes Local Government NAICS 31-33 Manufacturing : ENUUS00010331-33
+
+ U.S. TOTAL All Employees All establishment sizes Private NAICS 31-33 Manufacturing : ENUUS00010531-33
+
+ U.S. TOTAL All Employees All establishment sizes Federal Government NAICS 22 Utilities : ENUUS00010122
+
+ U.S. TOTAL All Employees All establishment sizes State Government NAICS 22 Utilities : ENUUS00010222
+
+ U.S. TOTAL All Employees All establishment sizes Local Government NAICS 22 Utilities : ENUUS00010322
+
+ U.S. TOTAL All Employees All establishment sizes Private NAICS 22 Utilities : ENUUS00010522
+
+ U.S. TOTAL All Employees All establishment sizes Federal Government NAICS 42 Wholesale trade : ENUUS00010142
+
+ U.S. TOTAL All Employees All establishment sizes State Government NAICS 42 Wholesale trade : ENUUS00010242
+
+ U.S. TOTAL All Employees All establishment sizes Local Government NAICS 42 Wholesale trade : ENUUS00010342
+
+ U.S. TOTAL All Employees All establishment sizes Private NAICS 42 Wholesale trade : ENUUS00010542
+
+ U.S. TOTAL All Employees All establishment sizes Federal Government NAICS 44-45 Retail trade : ENUUS00010144-45
+
+ U.S. TOTAL All Employees All establishment sizes State Government NAICS 44-45 Retail trade : ENUUS00010244-45
+
+ U.S. TOTAL All Employees All establishment sizes Local Government NAICS 44-45 Retail trade : ENUUS00010344-45
+
+ U.S. TOTAL All Employees All establishment sizes Private NAICS 44-45 Retail trade : ENUUS00010544-45
+
+ U.S. TOTAL All Employees All establishment sizes Federal Government NAICS 48-49 Transportation and warehousing : ENUUS00010148-49
+
+ U.S. TOTAL All Employees All establishment sizes State Government NAICS 48-49 Transportation and warehousing : ENUUS00010248-49
+
+ U.S. TOTAL All Employees All establishment sizes Local Government NAICS 48-49 Transportation and warehousing : ENUUS00010348-49
+
+ U.S. TOTAL All Employees All establishment sizes Private NAICS 48-49 Transportation and warehousing : ENUUS00010548-49
+
+ U.S. TOTAL All Employees All establishment sizes Federal Government NAICS 51 Information : ENUUS00010151
+
+ U.S. TOTAL All Employees All establishment sizes State Government NAICS 51 Information : ENUUS00010251
+
+ U.S. TOTAL All Employees All establishment sizes Local Government NAICS 51 Information : ENUUS00010351
+
+ U.S. TOTAL All Employees All establishment sizes Private NAICS 51 Information : ENUUS00010551
+
+ U.S. TOTAL All Employees All establishment sizes Federal Government NAICS 52 Finance and insurance : ENUUS00010152
+
+ U.S. TOTAL All Employees All establishment sizes State Government NAICS 52 Finance and insurance : ENUUS00010252
+
+ U.S. TOTAL All Employees All establishment sizes Local Government NAICS 52 Finance and insurance : ENUUS00010352
+
+ U.S. TOTAL All Employees All establishment sizes Private NAICS 52 Finance and insurance : ENUUS00010552
+
+ U.S. TOTAL All Employees All establishment sizes Federal Government NAICS 53 Real estate and rental and leasing : ENUUS00010153
+
+ U.S. TOTAL All Employees All establishment sizes State Government NAICS 53 Real estate and rental and leasing : ENUUS00010253
+
+ U.S. TOTAL All Employees All establishment sizes Local Government NAICS 53 Real estate and rental and leasing : ENUUS00010353
+
+ U.S. TOTAL All Employees All establishment sizes Private NAICS 53 Real estate and rental and leasing : ENUUS00010553
+
+ U.S. TOTAL All Employees All establishment sizes Federal Government NAICS 54 Professional and technical services : ENUUS00010154
+
+ U.S. TOTAL All Employees All establishment sizes State Government NAICS 54 Professional and technical services : ENUUS00010254
+
+ U.S. TOTAL All Employees All establishment sizes Local Government NAICS 54 Professional and technical services : ENUUS00010354
+
+ U.S. TOTAL All Employees All establishment sizes Private NAICS 54 Professional and technical services : ENUUS00010554
+
+ U.S. TOTAL All Employees All establishment sizes Federal Government NAICS 56 Administrative and waste services : ENUUS00010156
+
+ U.S. TOTAL All Employees All establishment sizes State Government NAICS 56 Administrative and waste services : ENUUS00010256
+
+ U.S. TOTAL All Employees All establishment sizes Local Government NAICS 56 Administrative and waste services : ENUUS00010356
+
+ U.S. TOTAL All Employees All establishment sizes Private NAICS 56 Administrative and waste services : ENUUS00010556
+
+ U.S. TOTAL All Employees All establishment sizes Federal Government NAICS 61 Educational services : ENUUS00010161
+
+ U.S. TOTAL All Employees All establishment sizes State Government NAICS 61 Educational services : ENUUS00010261
+
+ U.S. TOTAL All Employees All establishment sizes Local Government NAICS 61 Educational services : ENUUS00010361
+
+ U.S. TOTAL All Employees All establishment sizes Private NAICS 61 Educational services : ENUUS00010561
+
+ U.S. TOTAL All Employees All establishment sizes Federal Government NAICS 62 Health care and social assistance : ENUUS00010162
+
+ U.S. TOTAL All Employees All establishment sizes State Government NAICS 62 Health care and social assistance : ENUUS00010262
+
+ U.S. TOTAL All Employees All establishment sizes Local Government NAICS 62 Health care and social assistance : ENUUS00010362
+
+ U.S. TOTAL All Employees All establishment sizes Private NAICS 62 Health care and social assistance : ENUUS00010562
+
+ U.S. TOTAL All Employees All establishment sizes Federal Government NAICS 71 Arts, entertainment, and recreation : ENUUS00010171
+
+ U.S. TOTAL All Employees All establishment sizes State Government NAICS 71 Arts, entertainment, and recreation : ENUUS00010271
+
+ U.S. TOTAL All Employees All establishment sizes Local Government NAICS 71 Arts, entertainment, and recreation : ENUUS00010371
+
+ U.S. TOTAL All Employees All establishment sizes Private NAICS 71 Arts, entertainment, and recreation : ENUUS00010571
+
+ U.S. TOTAL All Employees All establishment sizes Federal Government NAICS 72 Accommodation and food services : ENUUS00010172
+
+ U.S. TOTAL All Employees All establishment sizes State Government NAICS 72 Accommodation and food services : ENUUS00010272
+
+ U.S. TOTAL All Employees All establishment sizes Local Government NAICS 72 Accommodation and food services : ENUUS00010372
+
+ U.S. TOTAL All Employees All establishment sizes Private NAICS 72 Accommodation and food services : ENUUS00010572
+
+ U.S. TOTAL All Employees All establishment sizes Federal Government NAICS 81 Other services, except public administration : ENUUS00010181
+
+ U.S. TOTAL All Employees All establishment sizes State Government NAICS 81 Other services, except public administration : ENUUS00010281
+
+ U.S. TOTAL All Employees All establishment sizes Local Government NAICS 81 Other services, except public administration : ENUUS00010381
+
+ U.S. TOTAL All Employees All establishment sizes Private NAICS 81 Other services, except public administration : ENUUS00010581
+
+ U.S. TOTAL All Employees All establishment sizes Federal Government NAICS 92 Public administration : ENUUS00010192
+
+ U.S. TOTAL All Employees All establishment sizes State Government NAICS 92 Public administration : ENUUS00010292
+
+ U.S. TOTAL All Employees All establishment sizes Local Government NAICS 92 Public administration : ENUUS00010392
+
+ U.S. TOTAL All Employees All establishment sizes Federal Government NAICS 99 Unclassified : ENUUS00010199
+
+ U.S. TOTAL All Employees All establishment sizes State Government NAICS 99 Unclassified : ENUUS00010299
+
+ U.S. TOTAL All Employees All establishment sizes Local Government NAICS 99 Unclassified : ENUUS00010399
+
+ U.S. TOTAL All Employees All establishment sizes Private NAICS 99 Unclassified : ENUUS00010599
+
+All Series:
+ENUUS00010111
+ENUUS00010211
+ENUUS00010311
+ENUUS00010511
+ENUUS00010321
+ENUUS00010521
+ENUUS00010123
+ENUUS00010223
+ENUUS00010323
+ENUUS00010523
+ENUUS00010131-33
+ENUUS00010231-33
+ENUUS00010331-33
+ENUUS00010531-33
+ENUUS00010122
+ENUUS00010222
+ENUUS00010322
+ENUUS00010522
+ENUUS00010142
+ENUUS00010242
+ENUUS00010342
+ENUUS00010542
+ENUUS00010144-45
+ENUUS00010244-45
+ENUUS00010344-45
+ENUUS00010544-45
+ENUUS00010148-49
+ENUUS00010248-49
+ENUUS00010348-49
+ENUUS00010548-49
+ENUUS00010151
+ENUUS00010251
+ENUUS00010351
+ENUUS00010551
+ENUUS00010152
+ENUUS00010252
+ENUUS00010352
+ENUUS00010552
+ENUUS00010153
+ENUUS00010253
+ENUUS00010353
+ENUUS00010553
+ENUUS00010154
+ENUUS00010254
+ENUUS00010354
+ENUUS00010554
+ENUUS00010156
+ENUUS00010256
+ENUUS00010356
+ENUUS00010556
+ENUUS00010161
+ENUUS00010261
+ENUUS00010361
+ENUUS00010561
+ENUUS00010162
+ENUUS00010262
+ENUUS00010362
+ENUUS00010562
+ENUUS00010171
+ENUUS00010271
+ENUUS00010371
+ENUUS00010571
+ENUUS00010172
+ENUUS00010272
+ENUUS00010372
+ENUUS00010572
+ENUUS00010181
+ENUUS00010281
+ENUUS00010381
+ENUUS00010581
+ENUUS00010192
+ENUUS00010292
+ENUUS00010392
+ENUUS00010199
+ENUUS00010299
+ENUUS00010399
+ENUUS00010599
